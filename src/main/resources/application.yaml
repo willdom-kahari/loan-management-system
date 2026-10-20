@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: loan-management
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    baseline-on-migrate: true
+
+default-user:
+  username: ${DEFAULT_USER_USERNAME}
+  email: ${DEFAULT_USER_EMAIL}
+  password: ${DEFAULT_USER_PASSWORD}
+logging:
+  level:
+    io.github.willdomkahari: trace
+    org.springframework.security: trace
+
+
+server:
+  port: 8089
+token:
+  jwt:
+    authority-claim: authority
+    role-prefix: ROLE_
+    secret-key: ${JWT_SECRET_KEY}
+    issuer: loan-management-system

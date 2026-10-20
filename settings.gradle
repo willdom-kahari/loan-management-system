@@ -1,0 +1,3 @@
+rootProject.name = 'loan-management'
+
+include 'user-management'
